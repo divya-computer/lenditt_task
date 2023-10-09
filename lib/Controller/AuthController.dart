@@ -17,20 +17,24 @@ class AuthController extends GetxController {
     if (email.isEmpty || !email.contains('@')) {
       emailError.value = 'Invalid email';
       return;
-    } else {
-      emailError.value = '';
-    }
-
-    if (password.isEmpty || password.length < 6) {
+    } else if (password.isEmpty || password.length < 6) {
       passwordError.value = 'Password must be at least 6 characters';
       return;
     } else {
+      emailError.value = '';
       passwordError.value = '';
     }
-
     Get.offAllNamed('/home');
-
     isLogged.value = true;
+
+    // if (password.isEmpty || password.length < 6) {
+    //   passwordError.value = 'Password must be at least 6 characters';
+    //   return;
+    // } else {
+    //   passwordError.value = '';
+    // }
+
+    // Get.offAllNamed('/home');
   }
 
   void logout() {

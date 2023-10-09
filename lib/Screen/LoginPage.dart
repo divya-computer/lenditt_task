@@ -43,6 +43,12 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: () {
                   controller.login();
+
+                  if (controller.emailError.value.isNotEmpty ||
+                      controller.passwordError.value.isNotEmpty) {
+                    Get.snackbar('Error',
+                        '${controller.emailError.value} ${controller.passwordError.value}');
+                  }
                 },
                 child: Text('Login'),
               ),
